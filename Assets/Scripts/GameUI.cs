@@ -13,7 +13,10 @@ public class GameUI : MonoBehaviour
     public Text newWaveTitle;
     public Text newWaveEnemyCount;
     public Text scoreUI;
+    public Text killCount;
     public Text gameOverScoreUI;
+    public Text gameOverKillCountUI;
+    public Text ProjectilesUI;
     public RectTransform healthBar;
     Player player;
 
@@ -32,6 +35,9 @@ public class GameUI : MonoBehaviour
     private void Update()
     {
         scoreUI.text = ScoreKeeper.score.ToString("D8");
+        killCount.text = ScoreKeeper.killCount.ToString("D4");
+        ProjectilesUI.text = FindObjectOfType<Player>().GetComponent<GunController>().equippedGun.projectilesRemainingInMag/ FindObjectOfType<Player>().GetComponent<GunController>().equippedGun.projectileSpawn.Length
+            + " / " + FindObjectOfType<Player>().GetComponent<GunController>().equippedGun.projectilesPerMag / FindObjectOfType<Player>().GetComponent<GunController>().equippedGun.projectileSpawn.Length;
         float healthPercent = 0;
         if (player != null)
         {
@@ -45,6 +51,7 @@ public class GameUI : MonoBehaviour
     {
         StartCoroutine(Fade(Color.clear, new Color(0,0,0,.95f), 1));//启动协程，从透明到黑，1秒
         gameOverScoreUI.text = scoreUI.text;
+        gameOverKillCountUI.text= killCount.text;
         scoreUI.gameObject.SetActive(false);
         healthBar.transform.parent.gameObject.SetActive(false);
         gameOverUI.SetActive(true);

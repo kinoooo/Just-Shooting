@@ -19,7 +19,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
     //被击中
     public virtual void TakeHit(float damage, Vector3 hitPoint,Vector3 hitDirection)
     {
-        //利用RaycastHit做点事情
         TakeDamage(damage);
     }
 

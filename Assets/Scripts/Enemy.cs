@@ -85,18 +85,20 @@ public class Enemy : LivingEntity
     //重写被击中调用方法
     public override void TakeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)
     {
-        AudioManager.instance.PlaySound("Impact",transform.position);//播放受击音效
-        if (damage >= health)
-        {
-            if (OnDeathStatic != null)
+        
+            AudioManager.instance.PlaySound("Impact", transform.position);//播放受击音效
+            if (damage >= health)
             {
-                OnDeathStatic();
+                if (OnDeathStatic != null && !dead)//!dead 防止子弹在体内射出导致多次击杀。在这里才判断是因为霰弹枪在体内开火，导致特效多次触发 很酷。
+                {
+                    OnDeathStatic();
+                }
+                AudioManager.instance.PlaySound("Enemy Death", transform.position);//播放死亡音效
+                                                                                   //生成粒子特效对象 在命中点 根据命中方向旋转  2秒后销毁该对象
+                Destroy(Instantiate(deathEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)), deathEffect.main.startLifetime.constant);
             }
-            AudioManager.instance.PlaySound("Enemy Death", transform.position);//播放死亡音效
-            //生成粒子特效对象 在命中点 根据命中方向旋转  2秒后销毁该对象
-            Destroy( Instantiate(deathEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)), deathEffect.main.startLifetime.constant);
-        }
-        base.TakeHit(damage, hitPoint, hitDirection);//调用基类的TakeHit()
+            base.TakeHit(damage, hitPoint, hitDirection);//调用基类的TakeHit()造成伤害
+
     }
 
     private void Update()

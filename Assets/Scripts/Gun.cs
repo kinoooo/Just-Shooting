@@ -35,7 +35,7 @@ public class Gun : MonoBehaviour
     bool triggerReleasedSinceLastShot;//距离上次射击是否释放了输入
     bool isReloading;//是否正在换弹匣
     int shotsRemainingInBurst;//一次连续射击的剩余子弹数
-    int projectilesRemainingInMag;//弹匣剩余子弹数
+    public int projectilesRemainingInMag { get; private set; }//弹匣剩余子弹数
 
     float recoilAngle;//后坐力偏转角度
     Vector3 recoilSmoothDampVelocity;//平复后坐力效果时所需速度变量

@@ -8,7 +8,7 @@ public class GunController : MonoBehaviour
 {
     public Transform weaponHold;    //实例化枪的位置
     public Gun[] allGuns;     //武器列表
-    Gun equippedGun;    //装备的武器
+    public Gun equippedGun { get; private set; }    //装备的武器
 
 
     private void Start()

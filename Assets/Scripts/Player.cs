@@ -88,6 +88,20 @@ public class Player : LivingEntity
             gunController.Reload();
         }
 
+        //-------------枪支切换输入
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            gunController.EquipGun(0);
+        }
+        else if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            gunController.EquipGun(1);
+        }
+        else if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            gunController.EquipGun(2);
+        }
+
         //-------------离开地图死亡
         if (transform.position.y < -20)
         {
