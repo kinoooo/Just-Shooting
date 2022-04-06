@@ -35,7 +35,7 @@ public class Player : LivingEntity
     void OnNewWave(int waveNumber)
     {
         health = startingHealth;//重置生命值
-        gunController.EquipGun(waveNumber - 1);
+        gunController.EquipGun(waveNumber - 1);//切枪
     }
 
     //持续更新
