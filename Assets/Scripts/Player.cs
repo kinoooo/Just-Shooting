@@ -89,18 +89,20 @@ public class Player : LivingEntity
         }
 
         //-------------«π÷ß«–ªª ‰»Î
-        if (Input.GetKeyUp(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gunController.EquipGun(0);
         }
-        else if (Input.GetKeyUp(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             gunController.EquipGun(1);
         }
-        else if (Input.GetKeyUp(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             gunController.EquipGun(2);
         }
+
+
 
         //-------------¿Îø™µÿÕºÀ¿Õˆ
         if (transform.position.y < -20)

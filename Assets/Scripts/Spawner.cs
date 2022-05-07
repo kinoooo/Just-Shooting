@@ -109,7 +109,7 @@ public class Spawner : MonoBehaviour
                 {
                     currentWave.timeBetweenSpawns *= .95f;
                     nextLevelUpTime = Time.time + timeBetweenLevelUp;
-                    Debug.Log("Ë¢¹Ö¼ä¸ô£º" + currentWave.timeBetweenSpawns);
+                    //Debug.Log("Ë¢¹Ö¼ä¸ô£º" + currentWave.timeBetweenSpawns);
                 }
             }
         }

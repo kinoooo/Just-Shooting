@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(correctPoint);
     }
 
+    private void Update()
+    {
+        
+    }
+
 
     //固定时间更新，避免因帧率不稳定产生抖动
     private void FixedUpdate()

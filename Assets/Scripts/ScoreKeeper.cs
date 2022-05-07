@@ -11,6 +11,8 @@ public class ScoreKeeper : MonoBehaviour
     float streakExpiryTime = 1.5f;//连杀时间 默认1s
     private void Start()
     {
+        score = 0;
+        killCount = 0;
         Enemy.OnDeathStatic += OnEnemyKilled;
         FindObjectOfType<Player>().OnDeath += OnPlayerDeath;//如果玩家死亡，则取消订阅OnEnemyKilled(),防止重复订阅
     }

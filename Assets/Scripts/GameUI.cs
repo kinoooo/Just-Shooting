@@ -36,8 +36,13 @@ public class GameUI : MonoBehaviour
     {
         scoreUI.text = ScoreKeeper.score.ToString("D8");
         killCount.text = ScoreKeeper.killCount.ToString("D4");
-        ProjectilesUI.text = FindObjectOfType<Player>().GetComponent<GunController>().equippedGun.projectilesRemainingInMag/ FindObjectOfType<Player>().GetComponent<GunController>().equippedGun.projectileSpawn.Length
-            + " / " + FindObjectOfType<Player>().GetComponent<GunController>().equippedGun.projectilesPerMag / FindObjectOfType<Player>().GetComponent<GunController>().equippedGun.projectileSpawn.Length;
+        
+        if (FindObjectOfType<Player>() != null)
+        {
+            Gun currentGun = FindObjectOfType<Player>().GetComponent<GunController>().equippedGun;//获取当前装备的武器
+            ProjectilesUI.text = currentGun.projectilesRemainingInMag / currentGun.projectileSpawn.Length//获取当前弹匣剩余子弹数和当前武器弹匣容量
+                + " / " + currentGun.projectilesPerMag / currentGun.projectileSpawn.Length;
+        }
         float healthPercent = 0;
         if (player != null)
         {

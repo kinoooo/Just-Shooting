@@ -81,7 +81,7 @@ public class MapGenerator : MonoBehaviour
 
         //生成障碍物
         int currentObstacleCount = 0;//当前障碍物数量 初始置0
-        bool[,] obstacleMap=new bool[(int)currentMap.mapSize.x, (int)currentMap.mapSize.y];//boll型二维数组 存障碍物位置图
+        bool[,] obstacleMap=new bool[currentMap.mapSize.x, currentMap.mapSize.y];//boll型二维数组 存障碍物位置图
         int obstacleCount = (int)(currentMap.mapSize.x * currentMap.mapSize.y * currentMap.obstaclePercent); //障碍物数量=全区块数*障碍物百分比
         List<Coord> allOpenCoords=new List<Coord>(allTileCoords);//设置List存储所有可到达瓷砖坐标
         for ( int i = 0; i < obstacleCount; i++)
@@ -185,7 +185,7 @@ public class MapGenerator : MonoBehaviour
         }
         //如果 目标可到达的区域的数量!=当前可以到达的区域数量 ,说明存在无法到达的区域，则该障碍物不可生成
         //目标可到达的区域的数量 =地图所有区域数量-当前障碍物数量
-        int targetAccessTileCount = (int)(currentMap.mapSize.x * currentMap.mapSize.y - currentObstacleCount);
+        int targetAccessTileCount = currentMap.mapSize.x * currentMap.mapSize.y - currentObstacleCount;
         //比较目标可到达的区域数量和当前可以到达的区域数量是否相同
         return targetAccessTileCount == accessibleTileCount;
     }
